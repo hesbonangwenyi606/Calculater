@@ -1,0 +1,4 @@
+1. npm install
+2. npm start
+
+(Requires Electron devDependency installed by npm)
