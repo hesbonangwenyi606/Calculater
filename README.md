@@ -65,7 +65,7 @@ Display Modes: Fix, Sci, Norm
 
 Keyboard Support for fast input
 
-🧰 Design & UX
+## Design & UX
 Non-programmable (exam-safe) layout
 
 Smooth rounded keys and responsive UI
@@ -74,17 +74,14 @@ Detachable virtual case (visual hard cover)
 
 Dark mode interface with high-contrast text
 
-⚡ System
+## System
 Cross-platform (Windows / macOS / Linux)
 
 Built with Electron + Node.js + JavaScript
 
 Lightweight and fast startup
 
-🗂️ Project Structure
-bash
-Copy code
-.
+## Project Structure
 ├── main.js          # Electron main process
 ├── preload.js       # Secure bridge to renderer
 ├── index.html       # App UI
