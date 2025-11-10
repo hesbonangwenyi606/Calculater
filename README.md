@@ -13,12 +13,10 @@ Make sure you have **Node.js (v14 or newer)** installed.
 ### 2️⃣ Install Dependencies
 ```bash
 npm install
-3️⃣ Start the App
-bash
-Copy code
+## Start the App
 npm start
-✨ Features
-🧩 Core Functionality
+## Features
+**Core Functionality**
 High-definition Natural Textbook Display — shows equations, fractions, and roots just like in textbooks.
 
 Over 300 functions, including:
@@ -49,14 +47,14 @@ Prime factorization, GCD, and LCM
 
 Function tabulation and evaluation
 
-💾 Memory & System
+## Memory & System
 Memory keys: MC, MR, M+, M−
 
 Smart error handling and safe evaluation (no remote code execution)
 
 Auto-reset & display recovery after invalid operations
 
-🧠 Display and Modes
+## Display and Modes
 Digits: 10 + 2 digits (mantissa + exponent)
 
 Angle Units: Degrees / Radians / Gradians
