@@ -1,77 +1,49 @@
-const display = document.getElementById('display');
-const buttons = document.querySelectorAll('.btn');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="calculator">
+    <div id="display">0</div>
+    <div id="buttons">
+      <!-- Numbers -->
+      <button class="btn" data-action="7">7</button>
+      <button class="btn" data-action="8">8</button>
+      <button class="btn" data-action="9">9</button>
+      <button class="btn" data-action="/">÷</button>
 
-let currentInput = '';
-let memory = 0;
+      <button class="btn" data-action="4">4</button>
+      <button class="btn" data-action="5">5</button>
+      <button class="btn" data-action="6">6</button>
+      <button class="btn" data-action="*">×</button>
 
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    const action = button.dataset.action;
+      <button class="btn" data-action="1">1</button>
+      <button class="btn" data-action="2">2</button>
+      <button class="btn" data-action="3">3</button>
+      <button class="btn" data-action="-">−</button>
 
-    switch(action) {
-      // Numbers and dot
-      case '0': case '1': case '2': case '3': case '4':
-      case '5': case '6': case '7': case '8': case '9':
-      case '.':
-        if (currentInput === '0' && action !== '.') {
-          currentInput = action;
-        } else {
-          currentInput += action;
-        }
-        display.textContent = currentInput;
-        break;
+      <button class="btn" data-action="0">0</button>
+      <button class="btn" data-action=".">.</button>
+      <button class="btn" data-action="=">=</button>
+      <button class="btn" data-action="+">+</button>
 
-      // Operators
-      case '+': case '-': case '*': case '/': case '%':
-        currentInput += ` ${action} `;
-        display.textContent = currentInput;
-        break;
+      <!-- Functions -->
+      <button class="btn" data-action="sqrt">√</button>
+      <button class="btn" data-action="power">x²</button>
+      <button class="btn" data-action="C">C</button>
 
-      // Functions
-      case 'sqrt':
-        try {
-          currentInput = Math.sqrt(eval(currentInput)).toString();
-          display.textContent = currentInput;
-        } catch {
-          display.textContent = 'Error';
-          currentInput = '';
-        }
-        break;
+      <!-- Memory -->
+      <button class="btn" data-action="MC">MC</button>
+      <button class="btn" data-action="MR">MR</button>
+      <button class="btn" data-action="M+">M+</button>
+      <button class="btn" data-action="M-">M-</button>
+    </div>
+  </div>
 
-      case 'power':
-        currentInput += ' ** ';
-        display.textContent = currentInput;
-        break;
-
-      case '=':
-        try {
-          currentInput = eval(currentInput).toString();
-          display.textContent = currentInput;
-        } catch {
-          display.textContent = 'Error';
-          currentInput = '';
-        }
-        break;
-
-      case 'C':
-        currentInput = '';
-        display.textContent = '0';
-        break;
-
-      // Memory buttons
-      case 'MC':
-        memory = 0;
-        break;
-      case 'MR':
-        currentInput += memory;
-        display.textContent = currentInput;
-        break;
-      case 'M+':
-        memory += Number(eval(currentInput) || 0);
-        break;
-      case 'M-':
-        memory -= Number(eval(currentInput) || 0);
-        break;
-    }
-  });
-});
+  <script src="script.js" defer></script>
+</body>
+</html>
