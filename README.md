@@ -1,17 +1,14 @@
-# 🧮 Modern Calculator — Electron (JavaScript) Version
-
+# Modern Calculator — Electron (JavaScript) Version
 This is a modern, high-precision **Scientific Calculator** built with **Electron**, using **HTML, CSS, and JavaScript**.  
 It’s a desktop port of the original Python version, redesigned with a sleek dark UI and extended scientific functions.
 
----
 
-## 🚀 How to Run (Developer)
+## How to Run (Developer)
 
-### 1️⃣ Install Node.js
+### Install Node.js
 Make sure you have **Node.js (v14 or newer)** installed.
 
-### 2️⃣ Install Dependencies
-```bash
+### Install Dependencies
 npm install
 ## Start the App
 npm start
