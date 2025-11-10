@@ -1,46 +1,77 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>Modern Calculator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="calculator">
-    <div class="display" id="display">0</div>
-    <div class="buttons">
-      <button class="btn mem" data-action="MC">MC</button>
-      <button class="btn mem" data-action="MR">MR</button>
-      <button class="btn mem" data-action="M+">M+</button>
-      <button class="btn mem" data-action="M-">M-</button>
+const display = document.getElementById('display');
+const buttons = document.querySelectorAll('.btn');
 
-      <button class="btn" data-action="7">7</button>
-      <button class="btn" data-action="8">8</button>
-      <button class="btn" data-action="9">9</button>
-      <button class="btn op" data-action="/">÷</button>
+let currentInput = '';
+let memory = 0;
 
-      <button class="btn" data-action="4">4</button>
-      <button class="btn" data-action="5">5</button>
-      <button class="btn" data-action="6">6</button>
-      <button class="btn op" data-action="*">×</button>
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const action = button.dataset.action;
 
-      <button class="btn" data-action="1">1</button>
-      <button class="btn" data-action="2">2</button>
-      <button class="btn" data-action="3">3</button>
-      <button class="btn op" data-action="-">−</button>
+    switch(action) {
+      // Numbers and dot
+      case '0': case '1': case '2': case '3': case '4':
+      case '5': case '6': case '7': case '8': case '9':
+      case '.':
+        if (currentInput === '0' && action !== '.') {
+          currentInput = action;
+        } else {
+          currentInput += action;
+        }
+        display.textContent = currentInput;
+        break;
 
-      <button class="btn" data-action="0">0</button>
-      <button class="btn" data-action=".">.</button>
-      <button class="btn op" data-action="%">%</button>
-      <button class="btn op" data-action="+">+</button>
+      // Operators
+      case '+': case '-': case '*': case '/': case '%':
+        currentInput += ` ${action} `;
+        display.textContent = currentInput;
+        break;
 
-      <button class="btn fn" data-action="sqrt">√</button>
-      <button class="btn fn" data-action="power">^</button>
-      <button class="btn clear" data-action="C">C</button>
-      <button class="btn equals" data-action="=">=</button>
-    </div>
-  </div>
-  <script src="renderer.js"></script>
-</body>
-</html>
+      // Functions
+      case 'sqrt':
+        try {
+          currentInput = Math.sqrt(eval(currentInput)).toString();
+          display.textContent = currentInput;
+        } catch {
+          display.textContent = 'Error';
+          currentInput = '';
+        }
+        break;
+
+      case 'power':
+        currentInput += ' ** ';
+        display.textContent = currentInput;
+        break;
+
+      case '=':
+        try {
+          currentInput = eval(currentInput).toString();
+          display.textContent = currentInput;
+        } catch {
+          display.textContent = 'Error';
+          currentInput = '';
+        }
+        break;
+
+      case 'C':
+        currentInput = '';
+        display.textContent = '0';
+        break;
+
+      // Memory buttons
+      case 'MC':
+        memory = 0;
+        break;
+      case 'MR':
+        currentInput += memory;
+        display.textContent = currentInput;
+        break;
+      case 'M+':
+        memory += Number(eval(currentInput) || 0);
+        break;
+      case 'M-':
+        memory -= Number(eval(currentInput) || 0);
+        break;
+    }
+  });
+});

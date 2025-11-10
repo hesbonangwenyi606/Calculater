@@ -17,6 +17,14 @@ function createWindow () {
   // win.webContents.openDevTools();
 }
 
+// Listen for button click from renderer
+ipcMain.on('button-clicked', (event) => {
+  console.log('Button was clicked!');
+  // Optional: show a dialog popup
+  // const { dialog } = require('electron');
+  // dialog.showMessageBox({ message: 'Button clicked!' });
+});
+
 app.whenReady().then(() => {
   createWindow();
   app.on('activate', function () {
