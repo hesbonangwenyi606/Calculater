@@ -92,11 +92,11 @@ Copy code
 ├── renderer.js      # Frontend logic
 ├── package.json     # Metadata & scripts
 └── README.md
-🧑‍💻 Author
+## Author
 Hesbon Angwenyi
-🗓️ November 2025
-📘 JavaScript | Electron | UI/UX Design
+November 2025
+JavaScript | Electron | UI/UX Design
 
-📜 License
+## License
 MIT License — feel free to use, improve, or adapt this project with attribution.
 
